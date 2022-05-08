@@ -133,7 +133,7 @@ def doujinshi_parser(id_):
     doujinshi_info = html.find('div', attrs={'id': 'info'})
 
     title = doujinshi_info.find('h1').text
-    pretty_name = doujinshi_info.find('h1').find('span', attrs={'class': 'pretty'}).text
+    pretty_name = doujinshi_info.find('h1').text
     subtitle = doujinshi_info.find('h2')
 
     doujinshi['name'] = title
@@ -156,9 +156,9 @@ def doujinshi_parser(id_):
     doujinshi['img_id'] = img_id.group(1)
     doujinshi['ext'] = ext
 
-    for _ in doujinshi_info.find_all('div', class_='tag-container field-name'):
-        if re.search('Pages:', _.text):
-            pages = _.find('span', class_='name').string
+    for _ in doujinshi_info.find_all('div'):
+        if re.search(' pages', _.text):
+            pages = _.text.replace(" pages", "")
     doujinshi['pages'] = int(pages)
 
     # gain information of the doujinshi

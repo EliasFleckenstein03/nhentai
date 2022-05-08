@@ -9,7 +9,7 @@ except ImportError:
     from urllib.parse import urlparse
 
 
-BASE_URL = os.getenv('NHENTAI', 'https://nhentai.net')
+BASE_URL = os.getenv('NHENTAI', 'https://ehentai.to')
 
 __api_suspended_DETAIL_URL = '%s/api/gallery' % BASE_URL
 
@@ -22,8 +22,7 @@ LOGIN_URL = '%s/login/' % BASE_URL
 CHALLENGE_URL = '%s/challenge' % BASE_URL
 FAV_URL = '%s/favorites/' % BASE_URL
 
-u = urlparse(BASE_URL)
-IMAGE_URL = '%s://i.%s/galleries' % (u.scheme, u.hostname)
+IMAGE_URL = 'https://t.dogehls.xyz/galleries'
 
 NHENTAI_HOME = os.path.join(os.getenv('HOME', tempfile.gettempdir()), '.nhentai')
 NHENTAI_HISTORY = os.path.join(NHENTAI_HOME, 'history.sqlite3')
